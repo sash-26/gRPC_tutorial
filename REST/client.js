@@ -1,22 +1,22 @@
-var express = require("express");
-var axios = require("axios");
+const express = require("express");
+const axios = require("axios");
 
-var app = express();
+const app = express();
 app.listen(3000, () => {
  console.log("Client running on port 3000");
 });
 
 app.get("/books", async (req, res, next) => {
-	var start = Date.now();
-	var data;
+	let start = Date.now();
+	let data;
 	try {
-		var response = await axios.get('http://localhost:3001/books');
+		let response = await axios.get('http://localhost:3001/books');
 		data = response.data;
 	} catch(err){
 		console.log("Downstream error");
 		data = "Error";
 	}
-	var stop = Date.now();
+	let stop = Date.now();
 	console.log(`Time taken: ${stop-start} ms`);
 	res.json(data);
 });

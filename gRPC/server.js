@@ -1,7 +1,7 @@
-var grpc = require('grpc')
-var proto = grpc.load('books.proto')
+const grpc = require('grpc')
+const proto = grpc.load('books.proto')
 
-var booksArr = [
+const booksArr = [
 					{
 						"Title" : "Harry Potter and the Deathly Hallows",
 						"Author" : "Rowling, J.K.",
@@ -59,7 +59,7 @@ var booksArr = [
 					}
 				]
 
-var server = new grpc.Server()
+const server = new grpc.Server()
 
 server.addService(proto.BookService.service, {
 	books: (_, callback) => {
